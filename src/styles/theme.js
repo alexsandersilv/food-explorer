@@ -24,5 +24,10 @@ export default {
     BACKGROUND_700: "#92000E", /*É a cor de fundo dos botões*/
     BACKGROUND_800: "#0D1D25", /*É a cor de fundo dos inputs*/
     BACKGROUND_900: "#000A0F", /*É a cor de fundo geral da página*/
+
+    HEADER: "hsla(200, 100%, 5%, 1)",
+
+    INPUTS: "#0D161B",
+    BUTTONS: "#92000E"
   }
 }

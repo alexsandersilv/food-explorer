@@ -6,6 +6,7 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     transition: filter 250ms linear;
+    font-family: 'Poppins', sans-serif;
   }
 
   :root {
@@ -14,7 +15,6 @@ export default createGlobalStyle`
 
   body {
     font-size: 1.6rem;
-    font-family: 'Poppins', sans-serif;
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
     color: ${({ theme }) => theme.COLORS.WHITE};
   }

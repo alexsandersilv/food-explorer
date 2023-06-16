@@ -1,7 +1,16 @@
+import { Header } from "../../components/Header";
+import { Container, BannerContainer, Banner } from "./style";
+
+import bannerImage from '../../assets/banner.png';
+
 export function Home() {
   return (
-    <h1>
-      Estou na Home
-    </h1>
+    <Container>
+      <Header />
+    
+      <BannerContainer>
+        <Banner src={bannerImage} />
+      </BannerContainer>
+    </Container>
   );
 }
