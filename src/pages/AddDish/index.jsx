@@ -7,18 +7,21 @@ import { Container, BackButton, Main, Form, Input, Inputs, InputWrapperPrimary, 
 import { Header } from '../../components/Header';
 
 import uploadImage from '../../assets/UploadSimple.svg';
-import { api } from "../../services/api";
+
+import { useDishes } from "../../hooks/dishes";
 
 export function AddDish() {
+  const [imageFile, setImageFile] = useState(null);
+  const [imageName, setImageName] = useState(null);
   const [name, setName] = useState('');
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('snack');
   const [ingredients, setIngredients] = useState('');
-  const [price, setPrice] = useState();
+  const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
 
-  const [dishImage, setDishImage] = useState();
-  const [imageFile, setImageFile] = useState(null)
+  const [submitBlock, setSubmitBlock] = useState(false);
 
+  const { add } = useDishes();
   const navigate = useNavigate();
 
   function handleBack() {
@@ -27,26 +30,23 @@ export function AddDish() {
 
   async function handleAddDish(event) {
     event.preventDefault();
+    setSubmitBlock(true);
 
-    const fileUploadForm = new FormData();
-    fileUploadForm.append("img", imageFile);
-
-    await api.post('/dishes', {
-      img: fileUploadForm,
+    await add({
+      image: imageFile,
       name,
       category,
       ingredients,
       price,
       description
-    })
+    });
+
+    setSubmitBlock(false);
   }
+
   function handleDishImage(event) {
-    const file = event.target.files[0];
-    setImageFile(file);
-
-    const imagePreview = URL.createObjectURL(file);
-    setDishImage(imagePreview);
-
+    setImageFile(event.target.files[0])
+    setImageName(event.target.files[0].name);
   }
 
   return (
@@ -68,7 +68,7 @@ export function AddDish() {
                   <div>
                     <p>
                       <img src={uploadImage} alt="Upload" />
-                      Selecionar Imagem
+                      { imageName ? imageName : 'Selecionar Imagem'}
                     </p>
                     <input type="file" id="dishImage" onChange={handleDishImage} />
                   </div>
@@ -87,16 +87,16 @@ export function AddDish() {
 
                 <div>
                   <label htmlFor="category">Categoria</label>
-                  <select 
+                  <select
                     id="category"
                     name="category"
-                    defaultValue={'Refeição'}
+                    defaultValue={'snack'}
                     value={category}
-                    onChange={event => setCategory(event.target.value)}  
+                    onChange={event => setCategory(event.target.value)}
                   >
                     <option value="snack">Refeição</option>
                     <option value="dessert">Sobremesas</option>
-                    <option value="bebidas">Bebidas</option>
+                    <option value="drinks">Bebidas</option>
                   </select>
                 </div>
 
@@ -125,7 +125,7 @@ export function AddDish() {
               </InputWrapperSecondary>
               <TextAreaWrapper>
                 <label htmlFor="description">Descrição</label>
-                <TextArea 
+                <TextArea
                   id="description"
                   placeholder=" Fale brevemente sobre o prato, seus ingredientes e composição"
                   value={description}
@@ -134,7 +134,7 @@ export function AddDish() {
               </TextAreaWrapper>
             </Inputs>
           </fieldset>
-          <Button>
+          <Button type="submit" disabled={submitBlock}>
             Salvar Prato
           </Button>
         </Form>

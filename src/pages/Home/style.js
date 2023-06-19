@@ -4,11 +4,20 @@ export const Container = styled.div`
   height: 100vh;
 `;
 
-
 export const BannerContainer = styled.div`
   width: 100%;
-  text-align: center;
+  margin: 0 auto;
+  padding: 0 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 export const Banner = styled.img`
+`;
+
+export const Dishes = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 `;

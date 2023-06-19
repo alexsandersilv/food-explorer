@@ -7,6 +7,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 
 import { AuthProvider } from './hooks/auth';
+import { DishesProvider } from './hooks/dishes';
 
 import GlobalStyles from './styles/global';
 
@@ -15,7 +16,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <AuthProvider>
-        <Routes />
+        <DishesProvider>
+          <Routes />
+        </DishesProvider>
       </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>,
