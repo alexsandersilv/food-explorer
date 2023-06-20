@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding: 2.4rem;
 
-  background-color: #0D0C0F;
+
+  width: 30.4rem;
+  height: 46.2rem;
+  background-color: #00070A;
 
   border-radius: .8rem;
   div {
@@ -11,6 +13,9 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+
+    padding: 2.4rem;
 
     gap: 1rem;
 
@@ -23,4 +28,8 @@ export const Container = styled.div`
       color: #82F3FF
     }
   }
+`;
+
+export const Image = styled.img`
+  width: 100%;
 `;

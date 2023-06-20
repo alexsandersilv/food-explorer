@@ -41,7 +41,7 @@ export function AddDish() {
       description
     });
 
-    setSubmitBlock(false);
+    navigate('/');
   }
 
   function handleDishImage(event) {
