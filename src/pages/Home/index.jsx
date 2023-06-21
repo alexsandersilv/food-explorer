@@ -7,20 +7,24 @@ import { Dish } from "../../components/Dish";
 import bannerImage from '../../assets/banner.png';
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
 export function Home() {
-  const [, setDishes] = useState([]);
-
   const [snack, setSnack] = useState([]);
   const [desserts, setDesserts] = useState([]);
   const [drinks, setDrinks] = useState([]);
+
+  const navigate = useNavigate();
+
+  function handleDashInfo(id) {
+    navigate(`/dish/${id}`);
+  }
 
   useEffect(() => {
     function handleListAllDishes() {
       api.get('/dishes')
         .then(response => response.data)
         .then(data => {
-          setDishes(data.dish);
           const snackDishes = data.dish.filter(dish => dish.category === 'snack');
           setSnack(snackDishes);
 
@@ -48,7 +52,7 @@ export function Home() {
             {
               snack.map((dish, index) => {
                 return (
-                  <Dish key={index} data={dish} />
+                  <Dish onClick={() => handleDashInfo(dish.id)} key={index} data={dish} />
                 );
               })
             }
@@ -57,7 +61,7 @@ export function Home() {
             {
               desserts.map((dish, index) => {
                 return (
-                  <Dish key={index} data={dish} />
+                  <Dish onClick={() => handleDashInfo(dish.id)} key={index} data={dish} />
                 );
               })
             }
@@ -66,7 +70,7 @@ export function Home() {
             {
               drinks.map((dish, index) => {
                 return (
-                  <Dish key={index} data={dish} />
+                  <Dish onClick={() => handleDashInfo(dish.id)} key={index} data={dish} />
                 );
               })
             }
