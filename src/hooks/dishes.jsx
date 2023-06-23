@@ -41,9 +41,39 @@ export function DishesProvider({ children }) {
     return;
   }
 
+  async function update({
+    id,
+    image,
+    name,
+    category,
+    ingredients,
+    price,
+    description
+  }) {
+    
+   hasContent(image, 'Você não selecionou uma imagem');
+   hasContent(name, 'Você não colocou o nome do Prato');
+   hasContent(category, 'Você não selecionou a categoria');
+   hasContent(ingredients, 'Você não adicionou ingredients');
+   hasContent(price, 'Você não adicionou o preço');
+   hasContent(description, 'Você não adicionou uma descrição');
+
+    const formData = new FormData();
+    formData.append('id', id)
+    formData.append('name', name);
+    formData.append('image', image);
+    formData.append('category', category);
+    formData.append('ingredients', ingredients);
+    formData.append('price', price);
+    formData.append('description', description);
+
+    await api.put('/dishes', formData);
+
+  }
+
 
   return (
-    <DishesContext.Provider value={{ add }}>
+    <DishesContext.Provider value={{ add, update }}>
       {children}
     </DishesContext.Provider>
   )

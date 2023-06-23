@@ -23,7 +23,7 @@ export function EditDish() {
 
   const [submitBlock, setSubmitBlock] = useState(false);
 
-  const { add } = useDishes();
+  const { update } = useDishes();
 
   const params = useParams();
   const navigate = useNavigate();
@@ -32,11 +32,12 @@ export function EditDish() {
     navigate(-1)
   }
 
-  async function handleAddDish(event) {
+  async function handleUpdateDish(event) {
     event.preventDefault();
     setSubmitBlock(true);
 
-    await add({
+    await update({
+      id: params.id,
       image: imageFile,
       name,
       category,
@@ -45,7 +46,8 @@ export function EditDish() {
       description
     });
 
-    navigate('/');
+    navigate(`/dish/${params.id}`)
+
   }
 
   function handleDishImage(event) {
@@ -76,7 +78,7 @@ export function EditDish() {
           &lt; voltar
         </BackButton>
 
-        <Form onSubmit={handleAddDish}>
+        <Form onSubmit={handleUpdateDish}>
           <fieldset>
             <legend>Editar Prato</legend>
             <Inputs>
