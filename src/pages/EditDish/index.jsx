@@ -50,11 +50,19 @@ export function EditDish() {
 
   }
 
+  async function handleRmDish() {
+    await api.delete('/dish/${params.id}', {
+      id: params.id,
+    });
+
+    navigate('/dish');
+  }
+
   function handleDishImage(event) {
     setImageFile(event.target.files[0])
     setImageName(event.target.files[0].name);
   }
-
+  
   useEffect(() => {
     async function handleDish() {
       const { data } = await api.get(`/dishes/info/${params.id}`);
@@ -159,7 +167,7 @@ export function EditDish() {
               Salvar Alterações
             </ButtonAdd>
 
-            <ButtonRm>
+            <ButtonRm onClick={handleRmDish}>
               Excluir Prato
             </ButtonRm>
 

@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { useState, createContext, useContext } from 'react';
 
 import { api } from '../services/api';
 
@@ -11,6 +11,7 @@ function hasContent(content, message) {
 }
 
 export function DishesProvider({ children }) {
+  const [search, setValue] = useState('');
 
   async function add({
     image,
@@ -71,9 +72,13 @@ export function DishesProvider({ children }) {
 
   }
 
+  async function handleSearch(value) {
+    setValue(value);
+  }
+
 
   return (
-    <DishesContext.Provider value={{ add, update }}>
+    <DishesContext.Provider value={{ add, update, handleSearch, search }}>
       {children}
     </DishesContext.Provider>
   )

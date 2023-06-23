@@ -7,18 +7,16 @@ import { Dish } from "../../components/Dish";
 import bannerImage from '../../assets/banner.png';
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
-import { useNavigate } from "react-router-dom";
+import { useDishes } from "../../hooks/dishes";
 
 export function Home() {
   const [snack, setSnack] = useState([]);
   const [desserts, setDesserts] = useState([]);
   const [drinks, setDrinks] = useState([]);
 
-  const navigate = useNavigate();
+  const { search } = useDishes();
 
-  function handleDashInfo(id) {
-    navigate(`/dish/${id}`);
-  }
+
 
   useEffect(() => {
     function handleListAllDishes() {
@@ -35,45 +33,112 @@ export function Home() {
           setDrinks(drinksDishes);
         });
     }
-
     handleListAllDishes();
   }, []);
+
+  function SnackDishes() {
+    if (search) {
+      return (
+        <>
+        {
+          snack.filter(dish => dish.name.toLowerCase().startsWith(search.toLowerCase()))
+          .map((dish, index) => {
+            return (
+              <Dish key={index} data={dish} />
+            );
+          })
+        }
+        </>
+      )
+    } else {
+      return (
+        <>
+        {
+          snack.map((dish, index) => {
+            return (
+              <Dish key={index} data={dish} />
+            );
+          })
+        }
+        </>
+      );
+    }
+  
+  }
+
+  function DessertsDishes() {
+    if (search) {
+      return (
+        <>
+        {
+          desserts.filter(dish => dish.name.toLowerCase().startsWith(search.toLowerCase()))
+          .map((dish, index) => {
+            return (
+              <Dish key={index} data={dish} />
+            );
+          })
+        }
+        </>
+      )
+    } else {
+      return (
+        <>
+        {
+          desserts.map((dish, index) => {
+            return (
+              <Dish key={index} data={dish} />
+            );
+          })
+        }
+        </>
+      );
+    }
+  }
+
+  function DrinksDishes() {
+    if (search) {
+      return (
+        <>
+        {
+          drinks.filter(dish => dish.name.toLowerCase().startsWith(search.toLowerCase()))
+          .map((dish, index) => {
+            return (
+              <Dish key={index} data={dish} />
+            );
+          })
+        }
+        </>
+      )
+    } else {
+      return (
+        <>
+        {
+          drinks.map((dish, index) => {
+            return (
+              <Dish key={index} data={dish} />
+            );
+          })
+        }
+        </>
+      );
+    }
+  }
 
   return (
     <Container>
       <Header />
-
-
       <Main>
         <Banner src={bannerImage} />
 
         <Dishes>
           <Section title="Refeição">
-            {
-              snack.map((dish, index) => {
-                return (
-                  <Dish onClick={() => handleDashInfo(dish.id)} key={index} data={dish} />
-                );
-              })
-            }
+           <SnackDishes />
           </Section>
           <Section title="Sobremesas">
-            {
-              desserts.map((dish, index) => {
-                return (
-                  <Dish onClick={() => handleDashInfo(dish.id)} key={index} data={dish} />
-                );
-              })
-            }
+            <DessertsDishes />
           </Section>
           <Section title="Bebidas">
-            {
-              drinks.map((dish, index) => {
-                return (
-                  <Dish onClick={() => handleDashInfo(dish.id)} key={index} data={dish} />
-                );
-              })
-            }
+            <DrinksDishes />
           </Section>
         </Dishes>
       </Main>
