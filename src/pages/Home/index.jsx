@@ -8,6 +8,7 @@ import bannerImage from '../../assets/banner.png';
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
 import { useDishes } from "../../hooks/dishes";
+import { Footer } from "../../components/Footer";
 
 export function Home() {
   const [snack, setSnack] = useState([]);
@@ -125,6 +126,8 @@ export function Home() {
   }
 
   return (
+    <>
+    
     <Container>
       <Header />
       <Main>
@@ -142,6 +145,8 @@ export function Home() {
           </Section>
         </Dishes>
       </Main>
+      <Footer />
     </Container>
+    </>
   );
 }

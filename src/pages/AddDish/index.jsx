@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Container, BackButton, Main, Form, Input, Inputs, InputWrapperPrimary, InputWrapperSecondary, TextAreaWrapper, TextArea, Button } from "./style";
 
 import { Header } from '../../components/Header';
+import { Footer } from '../../components/Footer'
 
 import uploadImage from '../../assets/UploadSimple.svg';
 
@@ -139,7 +140,7 @@ export function AddDish() {
           </Button>
         </Form>
       </Main>
-
+      <Footer />
     </Container>
   );
 }

@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 
+padding: .5rem;
+
+
   width: 30.4rem;
   height: 46.2rem;
   background-color: #00070A;
@@ -14,6 +17,7 @@ export const Container = styled.div`
   }
   
   div {
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: center;

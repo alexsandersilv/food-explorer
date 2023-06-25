@@ -2,13 +2,21 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { api } from '../../services/api';
 
+import { useAuth } from '../../hooks/auth';
+
 import { Header } from "../../components/Header";
 import { Container, Main, Dish, Data } from "./style";
+import { Footer } from '../../components/Footer'
 
 import { Ingredients } from '../../components/Ingredients';
 
 export function DishPage() {
   const [dish, setDish] = useState();
+
+  const [dishCount, setDishCount] = useState(0);
+
+
+  const { user } = useAuth();
 
   const navigate = useNavigate();
   const params = useParams();
@@ -20,6 +28,7 @@ export function DishPage() {
   function handleEditDish() {
     navigate(`/edit/${params.id}`)
   }
+
 
   useEffect(() => {
     async function handleDish() {
@@ -47,7 +56,25 @@ export function DishPage() {
               <p>{dish.description}</p>
               <Ingredients data={dish.ingredients}/>
               <div>
-                <button onClick={handleEditDish}>Editar Prato</button>
+                {
+                  user.isAmin ? (
+                    <button onClick={handleEditDish}>Editar Prato</button>
+                  ) : (
+                    <div className="controllers">
+                      <div>
+                        <span onClick={() => setDishCount(dishCount + 1)}>+</span>
+                        <span onClick={() => setDishCount(0)}>{dishCount}</span>
+                        <span onClick={() => {
+                          if (dishCount > 0) {
+                            setDishCount(dishCount -1)
+                          }
+                          }}>-</span>
+                      </div>
+
+                      <button>Incluir {' '} - {' '} R${dish.price}</button>
+                    </div>
+                  )
+                }
               </div>
             </Data>
           </Dish>
@@ -55,6 +82,7 @@ export function DishPage() {
       ) : <></> 
       }
       </Main>
+      <Footer />
     </Container>
   )
 }

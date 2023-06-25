@@ -48,8 +48,8 @@ export const Data = styled.div`
   }
   
   > div {
+    margin-top: 4.6rem;
     > button {
-      margin-top: 4.6rem;
       color: white;
       border: 0;
       border-radius: .5rem;
@@ -59,6 +59,35 @@ export const Data = styled.div`
       font-size: 1.4rem;
 
       cursor: pointer;
+    }
+
+    > div {
+      display: flex;
+    
+      align-items: center;
+
+      > div { 
+        display: flex;
+        gap: 1.4rem;
+
+        > span {
+          font-size: 2.5rem;
+          cursor: pointer;
+        }
+      }
+
+      > button {
+      margin-left: 3.3rem;
+      color: white;
+      border: 0;
+      border-radius: .5rem;
+      background-color: #750310;
+      padding: 1.2rem 2.5rem;
+
+      font-size: 1.4rem;
+
+      cursor: pointer;
+    }
     }
   }
 `;

@@ -1,20 +1,38 @@
 import { Icon } from '@iconify/react'
 import { Container, Image } from './style'
 
-import { api } from '../../services/api'
+import { useAuth } from '../../hooks/auth';
+
+import { api } from '../../services/api';
 
 export function Dish({ data, ...rest }) {
+
+  const { user } = useAuth();
 
   function handleDashInfo() {
     window.open(`/dish/${data.id}`, "_blank");
   }
 
+  function handleEditDish() {
+    window.open(`/edit/${data.id}`)
+  }
+
+
+
   return (
     <Container {...rest}>
-      <span onClick={handleDashInfo}>
-        <Icon icon="clarity:edit-line" width={35} />
-      </span>
-      <div>
+      {user.isAdmin ?
+        (
+          <span onClick={handleEditDish}>
+            <Icon icon="clarity:edit-line" width={35} />
+          </span>
+        ) : (
+          <span style={{ cursor: 'default' }}>
+            <Icon icon="teenyicons:heart-outline" width={35} />
+          </span>
+        )}
+
+      <div  onClick={handleDashInfo}>
         <p>
           <Image src={`${api.defaults.baseURL}/files/${data.img}`} />
         </p>

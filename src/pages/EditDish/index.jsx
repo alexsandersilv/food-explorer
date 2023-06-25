@@ -8,6 +8,8 @@ import { Header } from '../../components/Header';
 
 import uploadImage from '../../assets/UploadSimple.svg';
 
+import { Footer } from '../../components/Footer'
+
 import { useDishes } from "../../hooks/dishes";
 import { useEffect } from "react";
 import { api } from "../../services/api";
@@ -174,7 +176,7 @@ export function EditDish() {
           </BtnArea>
         </Form>
       </Main>
-
+      <Footer />
     </Container>
   );
 }

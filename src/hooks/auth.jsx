@@ -53,7 +53,8 @@ export function AuthProvider({ children }) {
   async function signOut() {
     localStorage.removeItem("@foodexplorer:user");
     localStorage.removeItem("@foodexplorer:token");
-
+    window.location.href = '/';
+    
     setData({});
   }
 
