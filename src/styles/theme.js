@@ -4,7 +4,6 @@ export default {
     GRAY: "#E1E1E6",
     INPUT: "#7C7C8A",
     FOOTER: "rgba(255, 255, 255, 0.3)",
-    
   },
   BACKGROUND: {
     PAGE: "#000A0F",
