@@ -19,9 +19,7 @@ export const BackButton = styled.div`
 
 
 export const Form = styled.form`
-
   margin: 3.2rem 0;
-
   width: 100%;
   fieldset {
     border: 0;
@@ -29,10 +27,8 @@ export const Form = styled.form`
     legend {
       color: white;
       font-size: 3.2rem;
-
       font-weight: normal;
       border: 0;
-
       margin-bottom: 3.2rem;
     }
 
@@ -75,7 +71,7 @@ export const InputWrapperPrimary = styled.div`
       align-items: center;
       gap: 0.8em;
 
-      background-color: ${({ theme }) => theme.COLORS.INPUTS};
+      background-color: ${({ theme }) => theme.BACKGROUND.INPUT};
       border: 0;
       border-radius: .5rem;
       color: white;
@@ -108,10 +104,9 @@ export const InputWrapperPrimary = styled.div`
   }
 
   select {
-    background-color: ${({ theme }) => theme.COLORS.INPUTS};
+    background-color: ${({ theme }) => theme.BACKGROUND.INPUT};
     border: 0;
     border-radius: .5rem;
-
     color: white;
     padding: 1.4rem 1.6rem;
   }
@@ -120,7 +115,6 @@ export const InputWrapperPrimary = styled.div`
 export const InputWrapperSecondary = styled.div`
   display: flex;
   width: 100%;
-
   gap: 3.2rem;
   
   label {
@@ -133,8 +127,7 @@ export const InputWrapperSecondary = styled.div`
   }
 
   div:nth-child(1) {
-    width: 85%;
-    
+    width: 85%;    
     div {
       width: 100%;
     
@@ -145,12 +138,10 @@ export const InputWrapperSecondary = styled.div`
     width: 15%;
   }
 
-
   select {
-    background-color: ${({ theme }) => theme.COLORS.INPUTS};
+    background-color: ${({ theme }) => theme.BACKGROUND.INPUT};
     border: 0;
     border-radius: .5rem;
-
     color: white;
     padding: 1.4rem 1.6rem;
   }
@@ -158,30 +149,27 @@ export const InputWrapperSecondary = styled.div`
 
 export const TextAreaWrapper = styled.div`
   width: 100%;
-
   display: flex;
   flex-direction: column;
-
   label {
     margin-bottom: 1.6rem;
   }
 `;
 
 export const TextArea = styled.textarea`
-  background-color: ${({ theme }) => theme.COLORS.INPUTS};
+  background-color: ${({ theme }) => theme.BACKGROUND.INPUT};
   border: 0;
   border-radius: .5rem;
   color: white;
   padding: 1.4rem .2rem;
   height: 17.2rem;
   resize: none;
-
 `;
 
 
 
 export const Input = styled.input`
-  background-color: ${({ theme }) => theme.COLORS.INPUTS};
+  background-color: ${({ theme }) => theme.BACKGROUND.INPUT};
   border: 0;
   border-radius: .5rem;
   color: white;
@@ -198,16 +186,16 @@ export const BtnArea = styled.div`
 
 export const ButtonAdd = styled.button`
   padding: 1.2rem 2.4rem;
-
   border: 0;
   border-radius: 5px;
-
   color: white;
   background-color: #AB4D55;
   
 `;
 
-export const ButtonRm = styled.button`
+export const ButtonRm = styled.p`
+  cursor: pointer;
+  font-size: 1.6rem;
   background-color: #0D161B;  
   padding: 1.2rem 2.4rem;
   border: 0;

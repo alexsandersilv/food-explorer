@@ -11,7 +11,6 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   margin-top: 3.2rem;
 
   > p {
@@ -25,7 +24,6 @@ export const Dish = styled.section`
   display: flex;
   justify-content: center;
   gap: 4.7rem;
-
   > img {
     width: 390.11px;
     height: 389px;
@@ -36,8 +34,6 @@ export const Data = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
-
-
   > h1 {
     font-size: 4rem;
     font-weight: 500;
@@ -55,21 +51,16 @@ export const Data = styled.div`
       border-radius: .5rem;
       background-color: #750310;
       padding: 1.2rem 2.5rem;
-
       font-size: 1.4rem;
-
       cursor: pointer;
     }
 
     > div {
       display: flex;
-    
       align-items: center;
-
       > div { 
         display: flex;
         gap: 1.4rem;
-
         > span {
           font-size: 2.5rem;
           cursor: pointer;
@@ -83,9 +74,7 @@ export const Data = styled.div`
       border-radius: .5rem;
       background-color: #750310;
       padding: 1.2rem 2.5rem;
-
       font-size: 1.4rem;
-
       cursor: pointer;
     }
     }

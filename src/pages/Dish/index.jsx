@@ -33,7 +33,8 @@ export function DishPage() {
   useEffect(() => {
     async function handleDish() {
       const { data } = await api.get(`/dishes/info/${params.id}`);
-      setDish(data.data[0]);
+      console.log(data.dish[0]);
+      setDish(data.dish[0]);
 
     }
     handleDish();
@@ -57,7 +58,7 @@ export function DishPage() {
               <Ingredients data={dish.ingredients}/>
               <div>
                 {
-                  user.isAmin ? (
+                  !user.isAmin ? (
                     <button onClick={handleEditDish}>Editar Prato</button>
                   ) : (
                     <div className="controllers">

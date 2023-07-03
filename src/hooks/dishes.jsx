@@ -72,13 +72,21 @@ export function DishesProvider({ children }) {
 
   }
 
-  async function handleSearch(value) {
+  async function del({
+    id
+  }) {
+    await api.delete(`/dishes/del/${id}`, {
+      id
+    });
+  }
+
+  function handleSearch(value) {
     setValue(value);
   }
 
 
   return (
-    <DishesContext.Provider value={{ add, update, handleSearch, search }}>
+    <DishesContext.Provider value={{ add, update, del, handleSearch, search }}>
       {children}
     </DishesContext.Provider>
   )

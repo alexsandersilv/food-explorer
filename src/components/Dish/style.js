@@ -1,15 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-
-padding: .5rem;
-
-
+  padding: 0.5rem;
   width: 30.4rem;
-  height: 46.2rem;
-  background-color: #00070A;
-
-  border-radius: .8rem;
+  background-color: ${({ theme }) => theme.BACKGROUND.DISH};
+  border-radius: 0.8rem;
 
   span {
     float: right;
@@ -23,13 +18,7 @@ padding: .5rem;
     justify-content: center;
     align-items: center;
     text-align: center;
-
-    height: 100%;
-
-    padding: 2.4rem;
-
     gap: 1rem;
-
 
     h1 {
       font-size: 2.4rem;
@@ -37,11 +26,11 @@ padding: .5rem;
 
     footer {
       font-size: 3.2rem;
-      color: #82F3FF
+      color: #82F3FF;
     }
   }
 `;
 
 export const Image = styled.img`
-  width: 100%;
+  width: 17.6rem;
 `;

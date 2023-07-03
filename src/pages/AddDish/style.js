@@ -19,9 +19,7 @@ export const BackButton = styled.div`
 
 
 export const Form = styled.form`
-
   margin: 3.2rem 0;
-
   width: 100%;
   fieldset {
     border: 0;
@@ -111,7 +109,6 @@ export const InputWrapperPrimary = styled.div`
     background-color: ${({ theme }) => theme.COLORS.INPUTS};
     border: 0;
     border-radius: .5rem;
-
     color: white;
     padding: 1.4rem 1.6rem;
   }
@@ -120,7 +117,6 @@ export const InputWrapperPrimary = styled.div`
 export const InputWrapperSecondary = styled.div`
   display: flex;
   width: 100%;
-
   gap: 3.2rem;
   
   label {
@@ -134,10 +130,8 @@ export const InputWrapperSecondary = styled.div`
 
   div:nth-child(1) {
     width: 85%;
-    
     div {
       width: 100%;
-    
     }
   }
 
@@ -145,12 +139,10 @@ export const InputWrapperSecondary = styled.div`
     width: 15%;
   }
 
-
   select {
     background-color: ${({ theme }) => theme.COLORS.INPUTS};
     border: 0;
     border-radius: .5rem;
-
     color: white;
     padding: 1.4rem 1.6rem;
   }
@@ -158,10 +150,8 @@ export const InputWrapperSecondary = styled.div`
 
 export const TextAreaWrapper = styled.div`
   width: 100%;
-
   display: flex;
   flex-direction: column;
-
   label {
     margin-bottom: 1.6rem;
   }
@@ -192,12 +182,9 @@ export const Input = styled.input`
 export const Button = styled.button`
   margin-top: 4.4rem;
   padding: 1.2rem 2.4rem;
-
   border: 0;
   border-radius: 5px;
-
   color: white;
   background-color: #AB4D55;
-  
   float: right;
 `;

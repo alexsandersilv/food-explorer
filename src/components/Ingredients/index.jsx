@@ -8,7 +8,6 @@ export function Ingredients({ data }) {
       <div>
         {ingredientsList.map((ingredient, index) => {
           return (
-
             <Ingredient key={index}>
               {ingredient}
             </Ingredient>

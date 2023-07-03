@@ -17,7 +17,114 @@ export function Home() {
 
   const { search } = useDishes();
 
+  function SnackDishes() {
+    if (search) {
+      return (
+        <>
+          {
+            snack.filter(dish => {
+              const nameMatches = dish.name.toLowerCase().startsWith(search.toLowerCase());
+              const ingredientsMatch = dish.ingredients
+                .split(',')
+                .some(ingredient =>
+                  ingredient.toLowerCase().includes(search.toLowerCase())
+                );
+              return nameMatches || ingredientsMatch;
+            }).map((dish, index) => {
+              return (
+                <Dish key={index} data={dish} />
+              );
+            })                   
+          }
+        </>
+      )
+    } else {
+      return (
+        <>
+          {
+            snack.map((dish, index) => {
+              return (
+                <Dish key={index} data={dish} />
+              );
+            })
+          }
+        </>
+      );
+    }
 
+  }
+
+  function DessertsDishes() {
+    if (search) {
+      return (
+        <>
+          {
+            desserts.filter(dish => {
+              const nameMatches = dish.name.toLowerCase().startsWith(search.toLowerCase());
+              const ingredientsMatch = dish.ingredients
+                .split(',')
+                .some(ingredient =>
+                  ingredient.toLowerCase().includes(search.toLowerCase())
+                );
+              return nameMatches || ingredientsMatch;
+            }).map((dish, index) => {
+              return (
+                <Dish key={index} data={dish} />
+              );
+            })  
+          }
+        </>
+      )
+    } else {
+      return (
+        <>
+          {
+            desserts.map((dish, index) => {
+              return (
+                <Dish key={index} data={dish} />
+              );
+            })
+          }
+        </>
+      );
+    }
+  }
+
+  function DrinksDishes() {
+    if (search) {
+      return (
+        <>
+          {
+            drinks.filter(dish => {
+              const nameMatches = dish.name.toLowerCase().startsWith(search.toLowerCase());
+              const ingredientsMatch = dish.ingredients
+                .split(',')
+                .some(ingredient =>
+                  ingredient.toLowerCase().includes(search.toLowerCase())
+                );
+              return nameMatches || ingredientsMatch;
+            }).map((dish, index) => {
+              return (
+                <Dish key={index} data={dish} />
+              );
+            })  
+          }
+        </>
+      )
+    } else {
+      return (
+        <>
+          {
+            drinks.map((dish, index) => {
+              return (
+                <Dish key={index} data={dish} />
+              );
+            })
+          }
+        </>
+      );
+    }
+  }
 
   useEffect(() => {
     function handleListAllDishes() {
@@ -37,105 +144,14 @@ export function Home() {
     handleListAllDishes();
   }, []);
 
-  function SnackDishes() {
-    if (search) {
-      return (
-        <>
-        {
-          snack.filter(dish => dish.name.toLowerCase().startsWith(search.toLowerCase()))
-          .map((dish, index) => {
-            return (
-              <Dish key={index} data={dish} />
-            );
-          })
-        }
-        </>
-      )
-    } else {
-      return (
-        <>
-        {
-          snack.map((dish, index) => {
-            return (
-              <Dish key={index} data={dish} />
-            );
-          })
-        }
-        </>
-      );
-    }
-  
-  }
-
-  function DessertsDishes() {
-    if (search) {
-      return (
-        <>
-        {
-          desserts.filter(dish => dish.name.toLowerCase().startsWith(search.toLowerCase()))
-          .map((dish, index) => {
-            return (
-              <Dish key={index} data={dish} />
-            );
-          })
-        }
-        </>
-      )
-    } else {
-      return (
-        <>
-        {
-          desserts.map((dish, index) => {
-            return (
-              <Dish key={index} data={dish} />
-            );
-          })
-        }
-        </>
-      );
-    }
-  }
-
-  function DrinksDishes() {
-    if (search) {
-      return (
-        <>
-        {
-          drinks.filter(dish => dish.name.toLowerCase().startsWith(search.toLowerCase()))
-          .map((dish, index) => {
-            return (
-              <Dish key={index} data={dish} />
-            );
-          })
-        }
-        </>
-      )
-    } else {
-      return (
-        <>
-        {
-          drinks.map((dish, index) => {
-            return (
-              <Dish key={index} data={dish} />
-            );
-          })
-        }
-        </>
-      );
-    }
-  }
-
   return (
-    <>
-    
     <Container>
       <Header />
       <Main>
         <Banner src={bannerImage} />
-
         <Dishes>
           <Section title="Refeição">
-           <SnackDishes />
+            <SnackDishes />
           </Section>
           <Section title="Sobremesas">
             <DessertsDishes />
@@ -147,6 +163,5 @@ export function Home() {
       </Main>
       <Footer />
     </Container>
-    </>
   );
 }

@@ -20,4 +20,9 @@ export const Dishes = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 1000px) { 
+    justify-content: center;
+    align-items: center;
+  }
 `;

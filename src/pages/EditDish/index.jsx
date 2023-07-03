@@ -25,7 +25,7 @@ export function EditDish() {
 
   const [submitBlock, setSubmitBlock] = useState(false);
 
-  const { update } = useDishes();
+  const { update, del } = useDishes();
 
   const params = useParams();
   const navigate = useNavigate();
@@ -53,10 +53,9 @@ export function EditDish() {
   }
 
   async function handleRmDish() {
-    await api.delete('/dish/${params.id}', {
-      id: params.id,
-    });
 
+    await del({ id: params.id });
+  
     navigate('/dish');
   }
 
@@ -69,11 +68,11 @@ export function EditDish() {
     async function handleDish() {
       const { data } = await api.get(`/dishes/info/${params.id}`);
 
-      setName(data.data[0].name);
-      setCategory(data.data[0].category);
-      setIngredients(data.data[0].ingredients);
-      setPrice(data.data[0].price);
-      setDescription(data.data[0].description);
+      setName(data.dish[0].name);
+      setCategory(data.dish[0].category);
+      setIngredients(data.dish[0].ingredients);
+      setPrice(data.dish[0].price);
+      setDescription(data.dish[0].description);
 
     }
     handleDish();
@@ -172,6 +171,7 @@ export function EditDish() {
             <ButtonRm onClick={handleRmDish}>
               Excluir Prato
             </ButtonRm>
+             
 
           </BtnArea>
         </Form>
