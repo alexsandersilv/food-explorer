@@ -58,7 +58,7 @@ export function DishPage() {
               <Ingredients data={dish.ingredients}/>
               <div>
                 {
-                  !user.isAmin ? (
+                  user.isAmin ? (
                     <button onClick={handleEditDish}>Editar Prato</button>
                   ) : (
                     <div className="controllers">

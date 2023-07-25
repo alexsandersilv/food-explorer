@@ -47,15 +47,10 @@ export function Header() {
           Novo Prato
         </Button>
       ) : (
-        <>
-          <div id="receipt">
-            <Icon icon="ph:receipt" width={32} />
-          </div>
-          <Button>
-            <Icon icon="ph:receipt" width={32} />
-            Pedidos (0)
-          </Button>
-        </>
+        <Button>
+          <Icon icon="ph:receipt" width={32} />
+          Pedidos (0)
+        </Button>
       )}
 
       <SignOutButton onClick={handleSignOut}>
